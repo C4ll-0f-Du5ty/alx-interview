@@ -1,6 +1,14 @@
 #!/usr/bin/python3
 
 def canUnlockAll(boxes):
+    """_summary_
+
+    Args:
+        boxes (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     boxesLift = list(range(1, len(boxes)))
     keys = set(boxes[0])
 
