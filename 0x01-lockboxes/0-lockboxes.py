@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""_summary_
+"""
 
 def canUnlockAll(boxes):
     """_summary_
