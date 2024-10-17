@@ -23,6 +23,26 @@ def summation(n, num_times):
     return total
 
 
+def isPrime(n):
+    """_summary_
+
+    Args:
+        n (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    if n == 2:
+        return True
+    elif n % 2 == 0:
+        return False
+    else:
+        for i in range(3, math.floor(n/2), 3):
+            if n % i == 0:
+                return False
+    return True
+
+
 def minOperations(n):
     """_summary_
 
@@ -53,7 +73,7 @@ def minOperations(n):
             # if not (j > math.floor(n / 2)):
             primes.append(j)
 
-    if len(primes) == 0:
+    if isPrime(n):
         return n
 
     if len(primes) == 1:
@@ -66,7 +86,6 @@ def minOperations(n):
                 if pow(i, p) * j == n:
                     return summation(i, p) + j
         p += 1
-
     # print(summation(primes[0], 5))
 
 
