@@ -32,7 +32,7 @@ def minOperations(n):
     Returns:
         _type_: _description_
     """
-    if (n < 1):
+    if n <= 1:
         return 0
 
     primes = []
