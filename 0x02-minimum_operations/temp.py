@@ -32,7 +32,7 @@ def minOperations(n):
         list.append(temp[0])
         
         
-    if current == n:
-        return operations
-    else:
-        return 0
+    # if current == n:
+    #     return operations
+    # else:
+    #     return 0
