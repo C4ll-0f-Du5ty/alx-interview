@@ -53,6 +53,9 @@ def minOperations(n):
             # if not (j > math.floor(n / 2)):
             primes.append(j)
 
+    if len(primes) == 0:
+        return n
+
     if len(primes) == 1:
         if pow(primes[0], 2) == n:
             return pow(primes[0], 2)
