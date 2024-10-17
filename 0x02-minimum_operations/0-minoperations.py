@@ -50,8 +50,8 @@ def minOperations(n):
                     flag = False
                     break
         if flag:
-            if not (j > math.floor(n / 2)):
-                primes.append(j)
+            # if not (j > math.floor(n / 2)):
+            primes.append(j)
 
     if len(primes) == 1:
         if pow(primes[0], 2) == n:

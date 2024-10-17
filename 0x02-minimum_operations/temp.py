@@ -1,38 +1,69 @@
 #!/usr/bin/python3
+"""_summary_
 
+    Returns:
+        _type_: _description_
+    """
+import math
+
+
+def summation(n, num_times):
+    """_summary_
+
+    Args:
+        n (_type_): _description_
+        num_times (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    total = 0
+    for _ in range(num_times):
+        total += n
+    return total
 
 
 def minOperations(n):
-    if(n < 1):
+    """_summary_
+
+    Args:
+        n (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    if (n < 1):
         return 0
-    operationsList = []
-    current = 2
+
+    primes = []
+
+    for j in range(2, n):
+        flag = True
+        if j == 2:
+            primes.append(j)
+            continue
+        if j % 2 == 0:
+            continue
+        if j % 2 != 0:
+            for i in range(3, math.floor(j / 2), 3):
+                if (j % i) == 0:
+                    flag = False
+                    break
+        if flag:
+            primes.append(j)
+
+    if len(primes) == 1:
+        if pow(primes[0], 2) == n:
+            return pow(primes[0], 2)
+    p = 1
+    while p != n:
+        for i in primes:
+            for j in primes:
+                if pow(i, p) * j == n:
+                    return summation(i, p) + j
+        p += 1
+
+    # print(summation(primes[0], 5))
 
 
-    def a(current):
-        operations = 2
-        oldCurrent = current
-        flag = False
-        while current < n:
-            if n % current == 0:
-                current += oldCurrent
-                operations += 1 if flag else 2
-                flag = True
-            else:
-                flag = False
-                current += 1
-                oldCurrent = current
-                operations += 1
-        return [operations, current]
-    
-
-    
-    while current != n:
-        temp = a(current)
-        list.append(temp[0])
-        
-        
-    # if current == n:
-    #     return operations
-    # else:
-    #     return 0
+print(minOperations(4))
