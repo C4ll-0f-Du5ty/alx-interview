@@ -70,4 +70,4 @@ def minOperations(n):
     # print(summation(primes[0], 5))
 
 
-print(minOperations(19170307))
+# print(minOperations(19170307))
