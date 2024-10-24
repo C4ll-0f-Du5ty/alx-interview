@@ -44,7 +44,8 @@ try:
         match = re.match(patt, line)
         if match:
             size += int(match.group(5))
-            statusCode[match.group(4)] += 1
+            if match.group(4) in statusCode.keys():
+                statusCode[match.group(4)] += 1
             counter += 1
             if counter % 10 == 0:
                 print(f"File size: ", size)
