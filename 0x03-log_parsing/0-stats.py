@@ -20,10 +20,8 @@ line list = [<IP Address>, -, [<date>], "GET /projects/260 HTTP/1.1",
 <status code>, <file size>]
 """
 
-import re
 import sys
 
-patt = r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(.*?)\] "(.*?)" (\d+) (\d+)'
 counter = 0
 size = 0
 statusCode = {
@@ -41,18 +39,17 @@ statusCode = {
 try:
     for line in sys.stdin:
 
-        match = re.match(patt, line)
-        if match:
-            if match.group(4) in statusCode.keys():
-                statusCode[match.group(4)] += 1
-            size += int(match.group(5))
-            counter += 1
-            if counter == 10:
-                counter = 0
-                print(f"File size: ", size)
-                for key, value in sorted(statusCode.items()):
-                    if value != 0:
-                        print(f"{key}: {value}")
+        lineComp = line.split(" ")
+        if lineComp[-2] in statusCode.keys():
+            statusCode[lineComp[-2]] += 1
+        size += int(lineComp[-1])
+        counter += 1
+        if counter == 10:
+            counter = 0
+            print(f"File size: ", size)
+            for key, value in sorted(statusCode.items()):
+                if value != 0:
+                    print(f"{key}: {value}")
 except Exception as err:
     pass
 finally:
