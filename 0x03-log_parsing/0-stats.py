@@ -43,19 +43,20 @@ try:
 
         match = re.match(patt, line)
         if match:
-            size += int(match.group(5))
             if match.group(4) in statusCode.keys():
                 statusCode[match.group(4)] += 1
+            size += int(match.group(5))
             counter += 1
-            if counter % 10 == 0:
+            if counter == 10:
+                counter = 0
                 print(f"File size: ", size)
                 for key, value in sorted(statusCode.items()):
-                    if value > 0:
+                    if value != 0:
                         print(f"{key}: {value}")
 except Exception as err:
     pass
 finally:
     print(f"File size: {size}")
     for key, value in sorted(statusCode.items()):
-        if value > 0:
+        if value != 0:
             print(f"{key}: {value}")
