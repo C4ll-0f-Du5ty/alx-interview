@@ -25,6 +25,7 @@ def signal_handler(sig, frame):
         if value > 0:
             print(f"{key}: {value}")
 
+
 signal.signal(signal.SIGINT, signal_handler)
 
 for line in sys.stdin:
