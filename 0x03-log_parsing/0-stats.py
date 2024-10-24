@@ -46,14 +46,16 @@ try:
         counter += 1
         if counter == 10:
             counter = 0
-            print(f"File size: ", size)
+            print("File size: {}".format(size))
             for key, value in sorted(statusCode.items()):
                 if value != 0:
-                    print(f"{key}: {value}")
+                    print("{}: {}".format(key, value))
+
 except Exception as err:
     pass
+
 finally:
-    print(f"File size: {size}")
+    print("File size: {}".format(size))
     for key, value in sorted(statusCode.items()):
         if value != 0:
-            print(f"{key}: {value}")
+            print("{}: {}".format(key, value))
