@@ -40,10 +40,11 @@ try:
     for line in sys.stdin:
 
         lineComp = line.split(" ")
-        if lineComp[-2] in statusCode.keys():
-            statusCode[lineComp[-2]] += 1
-        size += int(lineComp[-1])
-        counter += 1
+        if len(lineComp) > 4:
+            if lineComp[-2] in statusCode.keys():
+                statusCode[lineComp[-2]] += 1
+            size += int(lineComp[-1])
+            counter += 1
         if counter == 10:
             counter = 0
             print("File size: {}".format(size))
