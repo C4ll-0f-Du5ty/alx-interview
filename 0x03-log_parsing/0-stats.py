@@ -51,7 +51,7 @@ try:
                 for key, value in sorted(statusCode.items()):
                     if value > 0:
                         print(f"{key}: {value}")
-except KeyboardInterrupt:
+except Exception as err:
     pass
 finally:
     print(f"File size: {size}")
