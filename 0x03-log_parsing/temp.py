@@ -20,12 +20,19 @@ statusCode = {
 
 
 def signal_handler(sig, frame):
+    global finished
+    finished = True
     print(f"File size: {size}")
     for key, value in statusCode.items():
         if value > 0:
             print(f"{key}: {value}")
 
+
+finished = False
+
+
 signal.signal(signal.SIGINT, signal_handler)
+
 
 for line in sys.stdin:
     try:
@@ -41,3 +48,9 @@ for line in sys.stdin:
                         print(f"{key}: {value}")
     except KeyboardInterrupt:
         pass
+
+if not finished:
+    print(f"File size: {size}")
+    for key, value in statusCode.items():
+        if value > 0:
+            print(f"{key}: {value}")
